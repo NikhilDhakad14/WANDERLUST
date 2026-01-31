@@ -1,0 +1,95 @@
+<%  layout("/layouts/boilerplate") %>
+<body>
+    <div class="row mt-3"></div>
+    <div claas="col-8 offset-2">
+    <h3>EDIT YOUR LISTING</h3>
+     <form action="/listings/<%=listing._id%>?_method=PUT" method="post" enctype="multipart/form-data">
+        <div>
+
+
+           <div class="mb-3">
+            <label for="title" class="form-lable">title</label>
+       <input type="text" name="listing[title]" value="<%= listing.title%>" class="form-control">
+       </div>
+
+
+        <div>
+            <label for="description" class="form-lable">description</label>
+         <textarea type="text" class="form-control" name="listing[description]"><%= listing.description%> > </textarea>
+        </div>
+        
+
+        <div class="row">
+        <div class=" mb-3 col-md-4">
+        <label for="price" class="form-lable">price</label>
+         <input type="number" name="listing[price]"  value="<%= listing.price%>" class="form-control">
+        </div>
+        
+
+        <div class="mb-3 col-md-8">
+        <label for="country" class="form-lable">country</label>
+         <input type="text" name="listing[country]"  value="<%= listing.country%>" class="form-control">
+          </div>
+
+          </div>
+          </div>
+          <div  class="mb-3">
+            <p>Current Image:</p>
+            <img src="<%=originalImageUrl%>" height="150px" width="250px">
+        </div>
+         <div  class="mb-3">
+            <label for="image" class="form-lable">Upload new image</label>
+        <input type="file"  name="listing[image]" class="form-control">
+        </div>
+
+        <div class="mb-3">
+        <label for="location" class="form-lable">location</label>
+         <input type="text" name="listing[location]"  value="<%= listing.location%>" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-lable">
+                <select name="listing[category]" class="form-select" required>
+
+                    <option value="Luxury-hotels"
+                    <%= listing.category==="Luxury-hotels"?"selected":""%>>Luxury-hotels</option>
+
+                    
+                    <option value="Custle"
+                    <%= listing.category==="Custle"?"selected":""%>>Custle</option>
+                    
+                    
+                    <option value="Camping"
+                    <%= listing.category==="Camping"?"selected":""%>>Camping</option>
+                    
+                    
+                    <option value="Amazing-pools"
+                    <%= listing.category==="Amazing-pools"?"selected":""%>>Amazing-pools</option>
+                    
+                    
+                    <option value="Farms"
+                    <%= listing.category==="Farms"?"selected":""%>>Farms</option>
+                    
+                    
+                    <option value="Arctic"
+                    <%= listing.category==="Arctic"?"selected":""%>>Arctic</option>
+                    
+                    
+                    <option value="Mountains"
+                    <%= listing.category==="Mountains"?"selected":""%>>Mountains</option>
+                    
+                    
+                    <option value="Beaches"
+                    <%= listing.category==="Beaches"?"selected":""%>>Beaches</option>
+                    
+                </select>
+            </label>
+        </div>
+
+        </div>
+       
+        <button class="btn  edit-btn mt-3">Edit</button>
+    </form>
+    </div>
+    </div>
+</body>
+</html>

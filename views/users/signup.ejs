@@ -1,0 +1,21 @@
+<%layout("/layouts/boilerplate")%>
+ <div class="row mt-3">
+    <h1 class="col-6 offset-3">SIGNUP FOR WANDERLUST</h1>
+        <div class="col-8 offset-2">
+            <form action="/signup" method="post">
+                 <div class="mb-3">
+        <label for="username" class="form-lable">Username</label>
+        <input type="text" name="username" id="useraname" placeholder="enter your useraname" class="form-control" required oninvalid="this.setCustomValidity('username is required ')" oninput="this.setCustomValidity('')">
+        </div>
+            <div class="mb-3">
+        <label for="email" class="form-lable">email</label>
+        <input type="text" name="email" id="email" placeholder="enter your useraname" class="form-control" required oninvalid="this.setCustomValidity('email is required ')" oninput="this.setCustomValidity('')">
+        </div>
+            <div class="mb-3">
+        <label for="password" class="form-lable">password</label>
+        <input type="text" name="password" id="password" placeholder="enter your password" class="form-control" required oninvalid="this.setCustomValidity('username is required ')" oninput="this.setCustomValidity('')">
+        </div>
+        <button class="btn btn-danger mt-3">signup</button>
+            </form>
+    </div>
+    </div>

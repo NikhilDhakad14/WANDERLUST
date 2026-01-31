@@ -1,0 +1,103 @@
+<%  layout("/layouts/boilerplate") %>
+
+<body>
+    <div class="row mt-3">
+        <div class="col-8 offset-2">
+    <h3><%= listing.title %></h3>
+    </div>
+    <div class="card col-8 offset-2 listing-card">
+        <img src="<%=listing.image.url%>" class="card-img-top show-img" alt="listing_image" />
+        <div class="card-body">
+    <p class="card-text"> <%= listing.description %></p>
+    
+    <p class="card-text">&#8377;<%= Number(listing.price).toLocaleString("en-IN") %></p>
+    
+    <p class="card-text"><%= listing.country %></p>
+    
+    <p class="card-text"><%= listing.location %></p>
+    <p class="card-text"><%=listing.category%></p>
+    <p class="card-text"> owner:<b><%=listing.owner?.username%></b>
+    
+    </div>
+    </div>
+    <br>
+      <%if(currUser && listing.owner && listing.owner._id.equals(currUser._id)){%>
+    <div class="row mt-3">
+    <div class="col-8 offset-2 d-flex gap-2">
+    <a href="/listings/<%=listing._id%>/edit" class="btn btn-danger ">Edit</a>
+    <form action="/listings/<%=listing._id%>?_method=DELETE" method="post"><button  class="btn btn-danger">delete</button></form>
+    </div>
+    </div>
+    <% } %>
+    <%if(currUser){%>
+    <div class="col-8 offset-2 mb-3 mt-3"  ><h4>Leave A Review</h4>
+        <hr>
+    <form action="/listings/<%=listing._id%>/reviews" method="post">
+        <div class="mb-3 mt-3">
+             <label for="rating" class="form-lable">Ratings:</label>
+        <fieldset class="starability-slot">
+    
+
+  <input type="radio" id="first-rate1" name="review[rating]" value="1" checked/>
+  <label for="first-rate1" title="Terrible">1 star</label>
+  <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+  <label for="first-rate2" title="Not good">2 stars</label>
+  <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+  <label for="first-rate3" title="Average">3 stars</label>
+  <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+  <label for="first-rate4" title="Very good">4 stars</label>
+  <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+  <label for="first-rate5" title="Amazing">5 stars</label>
+</fieldset>
+</div>
+        <div class="mb-1 mt-0">
+            <label for="comment" class="form-lable">Comment</label>
+            <textarea name="review[comment]" id="comment" cols="20" rows="3" class="form-control" required  oninvalid="this.setCustomValidity('invalid-feedback, please add valid comments')" oninput="this.setCustomValidity('')"></textarea>
+        </div>
+        <br>
+        <button class=" btn btn-danger ">Submit</button>
+    </form></div>
+    <% } %>
+   
+   <div class="col-8 offset-3 mb-3" style=" margin-left: 190px;">
+  <% if(listing.reviews.length>0){%>
+   <div class="row ">
+    <hr>
+     <p><b>All Reviews</b></p>
+    <% for(review of listing.reviews){%>
+    <div class="card col-5 ms-3 mb-3" style="width: 355px;">
+        <div class="card-body">
+        <h5 class="card-title">@<%= review.author.username%></h5>
+        <p class="starability-result cars-text" data-rating=<%=review.rating%>></p>
+        <p class="card-text"><%=review.comment%></p>
+        </div>
+        
+        <form action="/listings/<%=listing._id%>/reviews/<%=review._id %>?_method=DELETE" method="post"  class="mb-3"><button class="btn btn-sm btn-danger ">Delete</button></form>
+          
+    </div>
+    <% } %>
+   </div>
+   <%}%>
+   </div>
+
+
+ <div class="col-8 offset-2 mb-3">
+<hr>
+  <h3>Where you'll be</h3>
+
+  <iframe
+    width="100%"
+    height="300"
+    frameborder="0"
+    scrolling="no"
+    marginheight="0"
+    marginwidth="0"
+    src="https://www.openstreetmap.org/export/embed.html?bbox=74.4,39.9,74.6,40.1&layer=mapnik"
+    style="border-radius:8px; border: 1px solid gray; padding: 0.5rem;"
+  ></iframe>
+  
+</div>
+    
+       
+    </div>
+</body>

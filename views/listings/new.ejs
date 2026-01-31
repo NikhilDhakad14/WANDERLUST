@@ -1,0 +1,62 @@
+<%  layout("/layouts/boilerplate") %>
+<body>
+    <div class="row mt-3">
+        <div class="col-8 offset-2">
+            <br>
+    <h3>CREATE NEW LISTING</h3>
+    <form action="/listings" method="post" enctype="multipart/form-data" >
+        <div class="mb-3">
+        <label for="title" class="form-lable">Title</label>
+        <input type="text" name="listing[title]" placeholder="enter your title" class="form-control" required oninvalid="this.setCustomValidity('Title is required ')" oninput="this.setCustomValidity('')">
+        </div>
+
+        <div  class="mb-3">
+            <label for="description" class="form-lable">Description</label>
+        <textarea type="text"name="listing[description]" placeholder="enter your description" class="form-control" required oninvalid="this.setCustomValidity('Description is required ')" oninput="this.setCustomValidity('')"></textarea>
+        </div>
+        <div class="row">
+        <div  class="mb-3 col-md-4">
+            <label for="price" class="form-lable">Price</label>
+        <input type="number" name="listing[price]" placeholder="enter your price" class="form-control" required oninvalid="this.setCustomValidity('Price is required ')" oninput="this.setCustomValidity('')">
+        </div>
+        
+         <div  class="mb-3 col-md-8" >
+            <label for="country" class="form-lable">Country</label>
+        <input  type="text" name="listing[country]" placeholder="enter your country" class="form-control" required oninvalid="this.setCustomValidity('Country is required ')" oninput="this.setCustomValidity('')">
+        </div>
+        </div>
+       
+         <div  class="mb-3">
+            <label for="image" class="form-lable">Upload images</label>
+        <input type="file"  name="listing[image]" class="form-control">
+        </div>
+        
+        <div  class="mb-3">
+            <label for="location" class="form-lable">Locataion</label>
+        <input  type="text" name="listing[location]" placeholder="enter your location" class="form-control" required oninvalid="this.setCustomValidity('Location is required ')" oninput="this.setCustomValidity('')">
+        </div>
+           
+        
+        <div  class="mb-3">
+            <label for="category" class="form-lable">Category</label>
+            <select name="listing[category]" class="form-select" required>
+                <option value="">Select category</option>
+                <option value="Luxury-hotels">Luxury-hotels</option>
+                <option value="Custle">Custle</option>
+                <option value="Amazing-pools">Amazing-pools</option>
+                <option value="Farms">Farms</option>
+                <option value="Arctic">Arctic</option>
+                <option value="Camping">Camping</option>
+                <option value="Mountains">Mountains</option>
+                <option value="Beaches">Beaches</option>
+            </select>
+        </div>
+        <button  class="btn btn-danger mt-3">Add</button>
+    </form>
+    <br>
+    <br>
+    </div>
+    </div>
+    
+</body>
+</html>
