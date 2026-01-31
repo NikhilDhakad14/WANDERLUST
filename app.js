@@ -89,16 +89,6 @@ app.use((req,res,next)=>{
     next();
 });
 
-app.get("/demoUser",async(req,res)=>{
-    let fakeUser=new User({
-        email:"fake@gamil.com",
-        username:"fakebhai"
-    });
-
-    let registerdUser= await User.register("fakeUser","helloworld");
-    res.send(registerdUser);
-
-});
 
 app.use("/listings",listingsRouter);
 app.use("/listings/:id/reviews",reviewsRouter);
@@ -108,7 +98,7 @@ app.use("/",userRouter);
 
 
 //home
-app.get("/listings",(req,res)=>{
+app.get("/",(req,res)=>{
     res.redirect("/listings");
 });
 //all route
