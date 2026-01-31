@@ -109,7 +109,7 @@ app.use("/",userRouter);
 
 //home
 app.get("/listings",(req,res)=>{
-    res.send("rout is working")
+    res.redirect("/listings");
 });
 //all route
 app.use((req,res,next)=>{
